@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h2 class="text-center">Lista de Laboratorios</h2>
+    <table class="table table-dark table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Ciudad</th>
+            <th scope="col">Pais</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for Lab in Laboratorios %}
+            <tr>
+                <th scope="row">{{Lab.nombre}}</th>
+                <th scope="row">{{Lab.ciudad}}</th>
+                <th scope="row">{{Lab.pais}}</th>
+                <td>
+                  <form action="{% url 'actualizar' Lab.id %}" method="GET">
+                      {% csrf_token %}
+                      <button class="btn btn-primary" type="submit">Actualizar</button>
+                  </form>
+                </td>
+              
+                <td>
+                  <form action="{% url 'confirmacion' Lab.id %}" method="GET">
+                    {% csrf_token %}
+                    <button class="btn btn-primary" type="submit" >Eliminar</button>
+                  </form>
+                </td>
+               
+                
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+</div>    
+<div>
+  <p>¿Información de los Laboratorios?</p>
+</div>
+<div>
+  <a href="{% url 'index'%}">&lt;-- Ir a la pagina de inicio</a>
+</div>
+<div>
+  <p>Usted ha visitado esta página {{ visitas_informacion }} veces.</p>
+</div>
+
+{% endblock content %}

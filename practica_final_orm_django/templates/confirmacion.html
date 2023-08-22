@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <p>Estas seguro que deseas eliminar el laboratorio: {{ laboratorio.nombre }}</p>
+
+    <a href="{% url 'informacion'%}">&lt;-- Retornar</a>
+
+    <form action="{% url 'confirmacion' laboratorio.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Confirmar </button>
+    </form>
+</div>
+{% endblock content %}

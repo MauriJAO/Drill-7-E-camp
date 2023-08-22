@@ -1,0 +1,27 @@
+
+<div class="container text-center">
+    <h2>Crear Laboratorio</h2>
+    <form method="POST" class="form">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="{{ form.nombre.id_for_label }}" class="form-label">Nombre:</label>
+            {{ form.nombre }}
+        </div>
+        <div class="mb-3">
+            <label for="{{ form.ciudad.id_for_label }}" class="form-label">Ciudad:</label>
+            {{ form.ciudad }}
+        </div>
+        <div class="mb-3">
+            <label for="{{ form.pais.id_for_label }}" class="form-label">Pais:</label>
+            {{ form.pais }}
+        </div>
+        <button type="submit" class="btn btn-primary">Crear</button>
+    </form>
+</div>
+
+<div>
+    <p>¿Información de los Laboratorios?</p>
+</div>
+<div>
+    <a href="{% url 'informacion'%}">Ir a información de los Laboratorios --&gt;</a>
+</div>
